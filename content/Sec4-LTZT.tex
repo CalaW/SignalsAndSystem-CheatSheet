@@ -1,0 +1,190 @@
+\section{LT和ZT}
+
+\vspace{-11pt}
+\[F(s) = \mathcal L[f(t)] = \int_{-\infty}^{+\infty}f(t)e^{-st}\D t\]
+\[f(t) = \frac{1}{2\pi j}\int_{\sigma-j\,\infty}^{\sigma+j
+\,\infty} F(s)e^{st}\D s\]
+
+\subsection{LT常用变换对}
+\vspace{-7pt}
+\[
+\begin{array}{lcl}
+u(t) & \longleftrightarrow & \frac{1}{s} \\
+t & \longleftrightarrow & \frac{1}{s^2} \\
+t^n & \longleftrightarrow & \frac{n!}{s^{n+1}} \\
+e^{-\alpha t} & \longleftrightarrow & \frac{1}{s+\alpha} \\
+te^{-\alpha t} & \longleftrightarrow & \frac{1}{(s+\alpha)^2} \\
+t^ne^{-\alpha t} & \longleftrightarrow & \frac{(-1)^nn!}{(s+\alpha)^{n+1}} \\
+\sin{\omega t} & \longleftrightarrow & \frac{\omega}{s^2+\omega^2} \\
+\cos{\omega t} & \longleftrightarrow & \frac{s}{s^2+\omega^2} \\
+\delta(t) & \longleftrightarrow & 1 \\
+\delta(t-t_0) & \longleftrightarrow & e^{-st_0} \\
+\delta'(t) & \longleftrightarrow & s
+\end{array}
+\]
+\(e^{-\alpha t}\sin{\omega t}  \longleftrightarrow  \frac{\omega}{(s+\alpha)^2+\omega^2}\)
+
+\subsection{收敛域}
+\begin{enumerate}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+\item 有始有终，能量有限（单脉冲）：整个 $s$ 平面
+\item 周期/直流：$\sigma_0 = 0$，稍微衰减一下就行
+\item $f(t)=t^n$：$\sigma_0 = 0$，指数增长速度
+\item $e^{at}$：$\sigma_0 = a$
+\item $e^{t^2}$ 等：无限时间范围不存在 LT
+\end{enumerate}
+
+\subsection{LT性质}
+该部分讨论单边 $0_-$ 系统拉普拉斯变换
+\begin{description}
+\tightlist
+
+\item[线性]
+$ax(t)+by(t)\leftrightarrow aX(s)+bY(s)$
+
+\item[比例变换]
+$\displaystyle f(at) \leftrightarrow  \frac{1}{a}F\left(\frac{s}{a}\right)$
+
+\item[时移]
+$f(t-t_0)u(t-t_0) \leftrightarrow  e^{-st_0}F(s)$
+
+\item[频移]
+$f(t)e^{-at} \leftrightarrow  F(s+a)$
+
+\item[微分]
+$\displaystyle \frac{df(t)}{dt} \leftrightarrow  sF(s) - f(0)$, $-tf(t)\leftrightarrow F'(s)$\\
+其中 $f(0) = f(0_-)$，不连续时会出现 $\delta(t)$
+\(f^{(n)}(t) \leftrightarrow s^nF(s)-s^{n-1}f(0_-)-\cdots - f^{(n-1)}(0_-)\)
+\(-tf(t) \leftrightarrow F'(s)\)
+
+\item[积分]
+$\displaystyle\int_{-\infty}^t f(\tau)\,d\tau \leftrightarrow  \frac{F(s)}{s} + \frac{f^{(-1)}(0)}{s}$ $\frac{f(t)}{t}\leftrightarrow \int_s^\infty F(s)\D s$\\
+其中 $f^{(-1)}(0) = \int_{-\infty}^0 f(\tau)\,d\tau$
+
+\item[卷积] $x(t)*y(t) \leftrightarrow  X(s)Y(s)$ 因果信号 
+$x(t)y(t) \leftrightarrow  \frac{1}{2\pi j}[X(s)*Y(s)]$
+$= \frac{1}{2\pi j} \int_{\sigma-j\,\infty}^{\sigma+j\,\infty} X(p)Y(s-p)\,dp$
+
+
+\end{description}
+
+\subsection{周期信号LT}
+\(\displaystyle x(t)=x_1(t)*\sum_{n=0}^{\infty}\delta(t-nT) \leftrightarrow \frac{X_1(s)}{1-e^{-sT}}\)
+
+\subsection{LT初值终值}
+要求：\(f(t)\) 因果信号，\(t=0\) 无跳变
+\begin{description}
+    \tightlist
+    \item[初值] \(\displaystyle\lim_{t\to 0_+}f(t) = f(0_+) = \lim_{s\to\infty} sF(s)\) \\
+    要求\(F(s)\) 为真分式，含 \(e^{-s}\) 的用时移搞掉。
+    \item[终值] \(\displaystyle\lim_{t\to\infty}f(t) = \lim_{s\to 0} sF(s)\) \\
+    要求极点全在左半平面，或仅有一阶\(p=0\)
+\end{description}
+
+\vspace{-7pt}
+\[X(z) = \mathcal Z[x[n]] = \sum_{n=-\infty}^\infty x[n]z^{-n}\]
+\[x[z] = \frac{1}{2\pi j}\ointctrclockwise_C X(z)z^{n-1}\D z\]
+
+\subsection{ZT常用变换对}
+\vspace{-7pt}
+\[
+\begin{array}{lcl}
+u[n] & \longleftrightarrow & \frac{z}{z-1} \\
+a^n & \longleftrightarrow & \frac{z}{z-a} \\
+n & \longleftrightarrow & \frac{z}{(z-1)^2} \\
+(n+1)a^n & \longleftrightarrow & \frac{z^2}{z-a} \\
+(n)a^{n-1} & \longleftrightarrow & \frac{z}{(z-a)^2} \\
+\delta[n] & \longleftrightarrow & 1 \\
+\cos(\omega_0 n) & \longleftrightarrow & \frac{z\sin\omega_0}{z^2-2z\cos\omega_0 + 1} \\
+\sin(\omega_0 n) & \longleftrightarrow & \frac{z(z-\cos\omega_0)}{z^2-2z\cos\omega_0 + 1} \\
+\end{array}
+\]
+
+\subsection{ZT性质}
+\begin{description}
+\tightlist
+\item[线性]
+$$ax[n]+by[n] \leftrightarrow aX(z)+bY(z)$$
+收敛域取交集；
+可能出现收敛边界处零点极点对消，扩大收敛域
+
+\item[移位]
+$$x[n-m]\leftrightarrow z^{-m}X(z)$$
+收敛域不变。
+单边：$\mathcal Z[x[n-m]u[n]]$
+\(x[n-1]=z^{-1}X(z)+x[-1]\), \(x[n-2]=z^{-2}X(z)+z^{-1}x[-1]+z^{-2}x[-2]\)
+
+
+\item[指数加权/z域比例]
+$$a^nx[n]\leftrightarrow X\left(\frac{z}{a}\right)$$
+收敛域比例扩大 $R_{x_-}<\left\|\frac{z}{a}\right\|<R_{x_+}$\\
+\(a^{-n}x[n]\leftrightarrow \), \((-1)^nx[n]\leftrightarrow X(-z)\)
+
+\item[反褶]
+$$x[-n] \leftrightarrow X\left(\frac{1}{z}\right)$$
+收敛域取倒数
+
+\item[补零扩展]
+$$x_{(k)}[n] \leftrightarrow\ X(z^k)\quad x_{(k)}[n]=\begin{cases}
+x[n/k], &\in\mathbb Z \\
+0, &\text{else}
+\end{cases}$$
+
+收敛域开方，会整出 $k$ 个极点 $\sqrt[k]{R_{x_-}} < \|z\| < \sqrt[k]{R_{x_+}}$
+
+\item[微分]
+$$nx[n]\leftrightarrow -z \frac{d}{dz}X(z)$$
+收敛域不变
+
+\item[共轭]
+$$x^*[n]\leftrightarrow X^*(z^*)$$
+收敛域不变
+
+\item[时域卷积]
+$$x[n*y[n]] \leftrightarrow  X(z)Y(z)$$
+收敛域取交集 $\max{(R_{x_-},R_{y_-})}<\|z\|<\min{(R_{x_+},R_{y_+})}$
+
+\item[z域卷积]
+$$x[n]y[n] \leftrightarrow  \frac{1}{2\pi j}\oint_C X(v)Y\left(\frac{z}{v}\right)v^{-1}\,dv$$
+收敛域相乘 $R_{x_-}R_{y_-} < \|z\| < R_{x_+} R_{y_+}$
+
+\item[差分]
+$$x[n]-x[n-1]\longleftrightarrow (1-z^{-1})X(z)$$
+收敛域不变
+
+\item[累加] $\sum_{m=-\infty}^nx[m]\longleftrightarrow \frac{1}{1-z^{-1}}X(z)$
+
+\end{description}
+
+\subsection{ZT初值终值}
+$x[n]$ 因果序列
+\begin{description}
+\tightlist
+\item[初值] $\displaystyle x[0]=\lim_{z\to\infty}X(z)$
+广义：$x[m]=$
+
+\item[终值] $\displaystyle \lim_{n\to\infty}x[n]=\lim_{z\to 1}[(z-1)X(z)]$ \\
+要求极点都在单位圆内（可以有 $z=1$）
+
+\end{description}
+
+\subsection{部分分式}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\linewidth]{figure/test.tikz}
+% \end{figure}
+\(A_0=X(0)\), 
+\(A_1 = \left[(z-z_m)\frac{X(z)}{z}\right]_{z=z_m}\)
+\(B_1 = \left[(z-z_m)^3\frac{X(z)}{z}\right]_{z=z_m}\): \(\frac{B_1}{(z-z_m)^3}\)
+\(B_2 = \left\{\frac{d}{dz}\left[(z-z_m)^3\frac{X(z)}{z}\right]\right\}_{z=z_m}\)
+\(B_3 = \frac{1}{2!}\left\{\frac{d^2}{dz^2}\left[(z-z_m)^3\frac{X(z)}{z}\right]\right\}_{z=z_m}\)
+\(X(s)\)不用除\(z\)
+
+\subsubsection{留数}
+\(x[n] = X(z)z^{n-1}\) 在围线 \(C\) 内所有极点的留数和
+\(\operatorname{Res}{[X(z)z^{n-1}]_{z=z_m}}=[(z-z_m)X(z)z^{n-1}]_{z=z_m}\)\\
+s阶 \(=\frac{1}{(s-1)!} \left\{\frac{d^{s-1}}{dz^{s-1}}[(z-z_m)^sX(z)z^{n-1}]\right\}_{z=z_m}\)
+\(X(s)\)围线是 \(\sigma\pm j\,\infty\) 及左边无限大圆弧
+
+\subsubsection{长除法}
+右边序列 - z降幂

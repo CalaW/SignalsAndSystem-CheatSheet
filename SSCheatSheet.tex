@@ -1,0 +1,106 @@
+\documentclass[10pt,landscape,a4paper]{ctexart}
+\usepackage{fontenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape,a4paper]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[nosf]{kpfonts}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tikzscale}
+\usepackage{float}
+\usepackage{booktabs}
+
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\pgfplotsset{compat = newest}
+
+\setlist[description]{leftmargin=!}
+\setlist[enumerate]{leftmargin=8pt}
+
+\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {.7ex plus -.5ex minus -.2ex}%
+                                {0.3ex plus .2ex}%
+                                {\normalfont\footnotesize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\scriptsize\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{4}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
+
+\DeclareMathOperator{\Sa}{Sa}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{5}
+% \abovedisplayskip=-10pt
+% \belowdisplayskip=0pt
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \large{\textbf{信号与系统 Cheat Sheet}} \\
+\end{center}
+
+\scriptsize
+\input{content/Sec1-Time.tex}
+\input{content/Sec2-CFT.tex}
+\input{content/Sec3-App.tex}
+\input{content/Sec4-LTZT.tex}
+\input{content/Sec5-Trans.tex}
+\input{content/Sec6-FFT.tex}
+\input{content/Sec7-Filter.tex}
+\input{content/Sec8-Sum.tex}
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+Copyright \copyright\ 2022 陈辰
+
+自04班 2020011633 chen-che20@mails.tsinghua.edu.cn
+
+\tiny\url{CalaW/SignalsAndSystem-CheetSheet}
+
+
+\vspace{-10pt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=2\linewidth]{figure/sum.png}
+\end{figure}
+\end{multicols*}
+\end{document}

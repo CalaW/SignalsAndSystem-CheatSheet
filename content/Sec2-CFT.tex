@@ -1,0 +1,82 @@
+\section{CFT}
+
+\vspace{-7pt}
+\begin{center}
+\(\displaystyle \mathcal F[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\,\omega t}\,dt\)
+\(\displaystyle \mathcal F^{-1}[F(\omega)] = \frac{1}{2\pi} \int_{-\infty}^{+\infty} F(\omega)e^{j\,\omega t}\,d\omega\)
+\end{center}
+\vspace{-10pt}
+
+\subsection{FT常用变换对}
+\vspace{-7pt}
+\[
+\begin{array}{lcl}
+e^{\alpha t}u(t) & \longleftrightarrow & \frac{1}{\alpha+j\omega} \\
+e^{-\alpha|t|} & \longleftrightarrow & \frac{2\alpha}{\alpha^2+\omega^2} \\
+\operatorname{sgn}(t) & \longleftrightarrow & \frac{2}{j\omega} \\
+u(t) & \longleftrightarrow & \pi\delta(\omega)+\frac{1}{j\omega} \\
+\delta(t) & \longleftrightarrow & 1 \\
+1 & \longleftrightarrow & 2\pi\delta(\omega) \\
+\delta'(t) & \longleftrightarrow & j\omega
+\end{array}
+\]
+\[
+\begin{array}{rlcl}
+\text{矩形} & Eu\left(t-\frac{\tau}{2}\right)-\sim & \leftrightarrow & E\tau \operatorname{Sa}{\frac{\omega\tau}{2}} \\
+\text{三角} & E\left(1-\frac{2|t|}{\tau}\right) & \leftrightarrow & \frac{E\tau}{2}\operatorname{Sa}^2{\frac{\omega\tau}{4}} \\
+\text{升余弦} & \frac{E}{2}\left[1+\cos{\frac{\omega t}{2}}\right] & \leftrightarrow & \frac{E\tau}{2}\cdot\frac{\operatorname{Sa}{\frac{\omega\tau}{2}}}{1-\left(\frac{\omega\tau}{2\pi}\right)^2 } \\
+\text{高斯} & Ee^{-\left(\frac t\tau\right)^2} & \leftrightarrow & \sqrt{\pi} E\tau e^{-\left(\frac{\omega\tau}{2}\right)^2} \\
+\end{array}
+\]
+
+\subsection{FT性质}
+\begin{description}
+\tightlist
+
+\item[线性] $\sum_{i=1}^n a_i f_i(t) \leftrightarrow \sum_{i=1}^n a_iF_i(\omega)$
+
+\item[奇偶虚实]
+
+\item[比例] $f(at) \leftrightarrow \frac{1}{|a|}F\left(\frac{\omega}{a}\right)$
+
+\item[时移] $f(t-t_0) \leftrightarrow F(\omega)e^{-j\,\omega t_0}$\\
+幅度谱不变，相位谱线性增加 
+
+\item[频移] $f(t)e^{j\,\omega_0t} \leftrightarrow F(\omega-\omega_0)$
+
+\item[微分]
+$\left(\frac{d}{dt}\right)^nf(t) \leftrightarrow (j\omega)^n F(\omega)$
+$(-jt)^n f(t) \leftrightarrow \left(\frac{d}{dt}\right)^nF(\omega)$
+
+\item[积分] $\int_{-\infty}^t f(\tau)\,d\tau \leftrightarrow \frac{F(\omega)}{j\omega}+\pi F(0)\delta(\omega)$\\
+$F(0)$ 对应直流分量\\
+有限时宽：$\int_{-\infty}^{+\infty}f^{(n)}(t)\,dt=0$
+
+\item[卷积]
+$f_1(t)*f_2(t)\longleftrightarrow F_1(\omega)F_2(\omega)$
+
+$f_1(t)f_2(t)\longleftrightarrow \frac{1}{2\pi}F_1(\omega)*F_2(\omega)$
+
+\item[对偶] $F(t) \longleftrightarrow 2\pi f(-\omega)$
+
+\item[帕斯瓦尔] 能量守恒，$\|X(\omega)\|^2$ 为能量密度谱
+$\int_{-\infty}^{+\infty}\|x(t)\|^2\,dt = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\|X(\omega)\|^2\,d\omega$
+\end{description}
+
+\subsection{周期信号FT}
+\begin{description}
+    \item[正余弦] \(\cos{\omega_1 t} \leftrightarrow \pi[\delta(\omega + \omega_1) + \delta(\omega - \omega_1)] \)\\\( \sin{\omega_1 t} \leftrightarrow j\,\pi[\delta(\omega + \omega_1) - \delta(\omega - \omega_1)]\)
+    \item[一般] \(\displaystyle f(t) \leftrightarrow \frac{2\pi}{T_1}\sum_{n=-\infty}^{+\infty}F_0(\omega)\delta(\omega-n\omega_1)\)
+\end{description}
+
+\subsection{讨论}
+光滑：\(|F(\omega)|\)与\(\omega^{n}\)成反比，则\(n-1\)阶导不连续。\\
+矩形；三角，余弦全波整流；升余弦
+
+频谱长度：多项式-指数-有限长，逐渐增加。
+
+希尔伯特：相移器，虚实满足，则因果。
+
+信号面积：\(F(0)\)
+
+结构信息：相位谱

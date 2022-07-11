@@ -1,0 +1,23 @@
+\section{应用}
+
+\subsection{调制}
+\begin{description}
+    \tightlist
+    \item[正弦] \(\cos{\omega_c t}\), \(Y(\omega) = \frac{1}{2}[F(\omega+\omega_c)+F(\omega-\omega_c)]\)\\
+    判断重叠：$\omega_c>\omega_m$
+    \item[复指数] \(e^{j\,\omega_c t}\), \(Y(\omega) = F(\omega-\omega_c)\)
+    \item[解调] 再乘\(\cos{\omega_c t}\)，低通滤波，逆变换。\(\omega_m<B<2\omega_c-\omega_m\)
+\end{description}
+
+\subsection{采样}
+
+周期延拓。
+\begin{description}
+\item[理想] \(\delta_T(t)=\sum_{n=-\infty}^{+\infty}\delta(t-nT_s)\)
+\(\displaystyle F_s(\omega) = \frac{1}{2\pi}f(t)*\mathcal F[\delta_T(t)] = \frac{1}{T_s}\sum_{n=-\infty}^{+\infty}F(\omega-n\omega_s)\)
+\item[矩形]
+\(P(\omega) = 2\pi\sum_{n=-\infty}^{+\infty} \frac{E\tau}{T_s} \Sa{\left(\frac{n\omega_s\tau}{2}\right)} \delta(\omega-n\omega_s)\)
+\(\displaystyle F_s(\omega) = \frac{E\tau}{T_s} \sum_{n=-\infty}^{+\infty} \Sa{\left(\frac{n\omega_s\tau}{2}\right)} F(\omega-n\omega_s)\)
+\end{description}
+
+不混叠，\(f_s>2f_m\)，\(f_m\)为奈奎斯特频率

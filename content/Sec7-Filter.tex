@@ -1,0 +1,25 @@
+\section{滤波器}
+离散\(\|H(e^{j\omega})\|\)偶函数\(T=2\pi\)，类型看\([0,\pi]\)
+
+可实现性：\(\int_{-\infty}^{+\infty}|H(j\Omega)|^2<\infty\)
+
+\subsection{IIR设计}
+框图：\(H(z)\)上面是输入，下面是输出
+
+脉冲响应不变：拉普拉斯反变化后采样，随后 z 变换
+$H(s)\to h(t)\to h[n]\to H(z)$\\
+适用部分分式，由于混叠，不适用高通。\\
+\(\frac{1}{s-p_k}\to \frac{1}{1-e^{p_kT}z^{-1}}\)
+
+双线性：令\(s=\frac{2}{T}\cdot \frac{1-z^{-1}}{1+z^{-1}}\)
+
+\subsection{FIR设计}
+通带频率 $\omega_{p}$, 截止频率$\omega_{s}$ 阻带衰减比率$A dB$\\
+归一化频率: $\Omega=\frac{2 \pi \omega}{\omega_{s}}$, 其中 $\omega_{s}$ 为采样频率\\
+(1) 选择理想低通滤波器的带宽: $\Omega_{1}=\frac{\Omega_{s}+\Omega_{p}}{2}$\\
+(2) 根据衰减比率选择合适的加窗窗口;\\
+(3) 根据过渡带 $\Omega_{2}=\Omega_{p}-\Omega_{s}$ 确定滤波器的长度: $N=\frac{2 \pi}{\Omega_{2}} \times R_{w}$，其中 $R_{w}$ 是加窗对应的过渡带宽度系数；\\
+(4) $ h_{d}(n)=\frac{\sin \left[\Omega_{1}(n-a)\right]}{\pi(n-a)} \cdot W[n] $\\
+其中
+$a=N/2$,
+$W[n]$是窗口函数

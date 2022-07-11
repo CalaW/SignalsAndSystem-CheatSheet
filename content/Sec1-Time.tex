@@ -1,0 +1,43 @@
+\section{概念\&时域分析}
+
+\subsection{欧拉公式}
+\(e^{jx} = \cos x + j \sin x\implies
+\begin{cases}
+  \cos{x} = \frac{1}{2}(e^{jx}+e^{-jx}) \\
+  \sin{x} = \frac{1}{2j}(e^{jx}-e^{-jx})
+\end{cases}\)
+
+\subsection{冲激函数}
+\begin{description}
+  \tightlist
+  \item[加权] \(f(t)\delta(t-t_0) = f(t_0)\delta(t-t_0)\)
+  \item[抽样] \(\int_{-\infty}^{+\infty} f(t)\delta(t-t_0)\D t = f(t_0)\)
+  \item[尺度] \(\delta(at) = \frac{1}{a}\delta(t)\)
+\end{description}
+
+\subsection{卷积}
+\begin{center}
+	\(\displaystyle \int_{-\infty}^{+\infty}f(\tau)h(t-\tau)\D\tau\)
+\(\displaystyle \sum_{k=-\infty}^{+\infty} f[k] h[n-k]\)
+\end{center}
+\vspace{-10pt}
+矩形波：上底\(\text{宽}-\text{窄}\)，下底\(\text{宽}+\text{窄}\)，高为窄门面积乘以宽门的高
+
+\(f(t)*u(t) = \int_{-\infty}^tf(\tau)\D t\);
+\(f(t)*\delta(t) = f(t)\);
+\(f(t)*\delta'(t) = f'(t)\)
+
+\subsection{系统}
+\begin{description}
+\tightlist
+\item[因果] 输出只和当前输入与之前的输入有关
+
+\item[稳定] 有界输入产生有界输出
+
+\item[时不变] 输入发生时移，输出发生同样时移
+
+\item[增量线性]
+零状态与输入成线性；
+零输入与零状态成线性。
+\end{description}
+\vspace{-7pt}
